@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+<button disabled>Disabled Button</button>
+
+</body>
+</html>
+
