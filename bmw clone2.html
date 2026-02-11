@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore BMW Latest Models & Book Test Drive | BMW.in</title>
+    <style>
+        :root {
+            --bmw-blue: #1c69d4;
+            --bmw-dark: #262626;
+            --bmw-gray: #f2f2f2;
+            --text-main: #262626;
+            --text-light: #666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "BMWTypeNext", "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            color: var(--text-main);
+            background-color: #fff;
+            overflow-x: hidden;
+        }
+
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 4rem;
+            height: 80px;
+            background: white;
+            border-bottom: 1px solid #e6e6e6;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .nav-logo div {
+            width: 45px;
+            height: 45px;
+            background: radial-gradient(circle at center, #fff 35%, #009FE3 35%, #009FE3 50%, #fff 50%, #fff 52%, #000 52%);
+            /* background-image: url("./logo.png"); */
+            border-radius: 50%;
+            border: 2px solid #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            padding-bottom: 4px;
+            border-bottom: 2px solid transparent;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            border-bottom: 2px solid var(--bmw-blue);
+        }
+
+        
+        .hero {
+            height: 85vh;
+            background-image: url("./2018.jpg");
+    background-size: cover;
+    background-position:center ;
+    background-repeat: no-repeat;
+         
+    
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 5rem;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(90deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 60%);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 300;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h2 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            color: #ddd;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary {
+            background-color: var(--bmw-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #1557b0;
+        }
+
+        .btn-outline {
+            border: 2px solid white;
+            color: white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: black;
+        }
+
+        
+        .models-section {
+            padding: 5rem 4rem;
+            background-color: #f9f9f9;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .model-card {
+            background: white;
+            border: 1px solid #ddd;
+            transition: transform 0.3s ease;
+        }
+
+        .model-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .model-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            object-fit: cover;
+        }
+
+        .model-info {
+            padding: 1.5rem;
+        }
+
+        .model-tag {
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .model-name {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .model-price {
+            font-size: 1rem;
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+        }
+
+        .card-btn {
+            display: block;
+            width: 100%;
+            padding: 10px 0;
+            text-align: center;
+            border: 1px solid var(--text-main);
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .card-btn:hover {
+            background: var(--text-main);
+            color: white;
+        }
+
+        
+        .form-section {
+            padding: 5rem 4rem;
+            display: flex;
+            gap: 4rem;
+            justify-content: center;
+            background: white;
+        }
+
+        .form-container {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .form-row .form-group {
+            flex: 1;
+        }
+
+        label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 0;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        input:focus, select:focus {
+            border-color: var(--bmw-blue);
+        }
+
+        .submit-btn {
+            background-color: var(--bmw-blue);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: #1557b0;
+        }
+
+        
+        footer {
+            background-color: #f2f2f2;
+            padding: 3rem 4rem;
+            border-top: 1px solid #ddd;
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links a {
+            text-decoration: none;
+            color: #666;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            nav { padding: 0 1.5rem; }
+            .hero { padding-left: 1.5rem; }
+            .models-section, .form-section { padding: 3rem 1.5rem; }
+            .form-row { flex-direction: column; gap: 0; }
+            .nav-links { display: none; } 
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">
+            <div></div> <span>BMW</span>
+        </div>
+        <div class="nav-links">
+            <a>Models</a>
+            <a>Buy New Vehicle</a>
+            <a>Electric</a>
+            <a>Services</a>
+            <a>More BMW</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h2>The All-New BMW X3</h2>
+            <h1>SHEER DRIVING <br>PLEASURE</h1>
+            <div style="margin-top: 2rem;">
+                <a href="#test-drive" class="btn btn-primary">Book a Test Drive</a>
+                <a href="#models" class="btn btn-outline">Explore Models</a>
+            </div>
+        </div>
+    </header>
+
+    <section id="models" class="models-section">
+        <h2 class="section-title">Latest Models in India</h2>
+        <div class="models-grid">
+            <div class="model-card">
+                <img src=https://bmw.scene7.com/is/image/BMW/x1_high?wid=585&hei=330 alt="BMW X1" class="model-img">
+                <div class="model-info">
+                    <span class="model-tag">Sports Activity Vehicle</span>
+                    <h3 class="model-name">BMW X1</h3>
+                    <p class="model-price">Starting from ₹ 49,50,000</p>
+                    <a href="#test-drive" class="card-btn">Test Drive</a>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src=https://bmw.scene7.com/is/image/BMW/g90_electric-driving_range:3to2?fmt=webp&wid=2560&hei=1707 alt="BMW 3 Series" class="model-img">
+                <div class="model-info">
+                    <span class="model-tag">Sedan</span>
+                    <h3 class="model-name">M5 Competition</h3>
+                    <p class="model-price">Starting from ₹ 2,50,00,000</p>
+                    <a href="#test-drive" class="card-btn">Test Drive</a>
+                </div>
+            </div>
+
+            <div class="model-card">
+                <img src=https://bmw.scene7.com/is/image/BMW/front-comfort-suspension-ix1:3to2?fmt=webp&wid=2560&hei=1707 alt="BMW iX1" class="model-img">
+                <div class="model-info">
+                    <span class="model-tag">Electric</span>
+                    <h3 class="model-name">BMW iX1</h3>
+                    <p class="model-price">Starting from ₹ 2,22,90,000</p>
+                    <a href="#test-drive" class="card-btn">Test Drive</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="test-drive" class="form-section">
+        <div class="form-container">
+            <h2 class="section-title">Request a Test Drive</h2>
+            <p style="margin-bottom: 2rem; color: #555;">Complete your details below and your preferred BMW Dealer will be in touch shortly to arrange your driving experience.</p>
+            
+            <form action="#">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="series">Series *</label>
+                        <select id="series">
+                            <option>Select Series</option>
+                            <option>X Series</option>
+                            <option>3 Series</option>
+                            <option>5 Series</option>
+                            <option>7 Series</option>
+                            <option>i Series (Electric)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="model">Model *</label>
+                        <select id="model">
+                            <option>Select Model</option>
+                            <option>X1</option>
+                            <option>X3</option>
+                            <option>X5</option>
+                            <option>3 Series Gran Limousine</option>
+                            <option>iX1</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fname">First Name *</label>
+                        <input type="text" id="fname" placeholder="Enter first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lname">Last Name *</label>
+                        <input type="text" id="lname" placeholder="Enter last name">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">E-mail *</label>
+                        <input type="email" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="mobile">Mobile Number *</label>
+                        <input type="tel" id="mobile" placeholder="+91">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="dealer">Preferred Dealer City *</label>
+                    <select id="dealer">
+                        <option>Select City</option>
+                        <option>Delhi</option>
+                        <option>Mumbai</option>
+                        <option>Bangalore</option>
+                        <option>Chennai</option>
+                        <option>Hyderabad</option>
+                    </select>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <button type="button" class="submit-btn" onclick="alert('Thank you! Your test drive request has been simulated.')">SUBMIT REQUEST</button>
+                </div>
+                <p style="margin-top: 1rem; font-size: 0.8rem; color: #777;">
+                    * Mandatory fields. By clicking submit, you agree to our Terms and Conditions.
+                </p>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-links">
+            <a>Contact</a>
+            <a>Find a Dealer</a>
+             </div>
+        <p>&copy; Created by AKSHAT SINGH(796)</p>
+    </footer>
+
+</body>
+</html>
